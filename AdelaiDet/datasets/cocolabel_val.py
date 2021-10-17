@@ -175,7 +175,7 @@ def parseXmlFiles(xml_path):
 
 if __name__ == '__main__':
 	#修改这里的两个地址，一个是xml文件的父目录；一个是生成的json文件的绝对路径
-    xml_path = r'/home/researchsrv1/bojun/val_person/Annotations_voc_val'
-    json_file = r'instances_person_val.json'
+    xml_path = r'/home/researchsrv1/bojun/solo/detectron2solov2/AdelaiDet/datasets/PCM_3c/Annotations_voc_val'
+    json_file = r'instances_3c_val.json'
     parseXmlFiles(xml_path)
     json.dump(coco, open(json_file, 'w'))

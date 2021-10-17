@@ -46,7 +46,7 @@ from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.data.datasets.coco import load_coco_json
 import pycocotools
 #声明类别，尽量保持
-CLASS_NAMES =["person"]
+CLASS_NAMES =['background','person', 'car', 'motorcycle']
 # 数据集路径
 DATASET_ROOT = './datasets/PCM_3c'
 ANN_ROOT = os.path.join(DATASET_ROOT, 'annotations')
@@ -69,6 +69,7 @@ def plain_register_dataset():
     #训练集
     DatasetCatalog.register("coco_PCM_train", lambda: load_coco_json(TRAIN_JSON, TRAIN_PATH))
     MetadataCatalog.get("coco_PCM_train").set(thing_classes=CLASS_NAMES,  # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
+                                                    #thing_dataset_id_to_contiguous_id={1: 0, 3: 1, 4: 2},
                                                     evaluator_type='coco', # 指定评估方式
                                                     json_file=TRAIN_JSON,
                                                     image_root=TRAIN_PATH)
@@ -77,6 +78,7 @@ def plain_register_dataset():
     #验证/测试集
     DatasetCatalog.register("coco_PCM_val", lambda: load_coco_json(VAL_JSON, VAL_PATH))
     MetadataCatalog.get("coco_PCM_val").set(thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
+                                                #thing_dataset_id_to_contiguous_id={1: 0, 3: 1, 4: 2},
                                                 evaluator_type='coco', # 指定评估方式
                                                 json_file=VAL_JSON,
                                                 image_root=VAL_PATH)

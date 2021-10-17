@@ -8,7 +8,7 @@ import cv2
 from PIL import Image, ImageDraw
 
 # the path you want to save your results for coco to voc
-savepath = "train_3c/"
+savepath = "PCM_3c/"
 img_dir = savepath + 'images_train/'
 anno_dir = savepath + 'Annotations_voc_train/'
 # datasets_list=['train2014', 'val2014']
@@ -17,7 +17,7 @@ datasets_list = ['train2017']
 #classes_names = ['car', 'bicycle', 'person', 'motorcycle', 'bus', 'truck']
 classes_names = ['person', 'car', 'motorcycle']
 # Store annotations and train2014/val2014/... in this folder
-dataDir = '/home/researchsrv1/bojun/COCO'
+dataDir = '/media/researchsrv1/Data/COCO/COCO'
 
 headstr = """\
 <annotation>
