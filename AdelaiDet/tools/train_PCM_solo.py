@@ -46,7 +46,7 @@ from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.data.datasets.coco import load_coco_json
 import pycocotools
 #声明类别，尽量保持
-CLASS_NAMES =['background','person', 'car', 'motorcycle']
+CLASS_NAMES =['','person', 'car', 'motorcycle']
 # 数据集路径
 DATASET_ROOT = './datasets/PCM_3c'
 ANN_ROOT = os.path.join(DATASET_ROOT, 'annotations')
