@@ -1,4 +1,4 @@
-_BASE_: "Base-SOLOv2_PCM.yaml"
+_BASE_: "Base-SOLOv2_PBC.yaml"
 MODEL:
   WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
   RESNETS:

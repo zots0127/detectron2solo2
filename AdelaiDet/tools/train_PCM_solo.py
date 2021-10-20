@@ -46,29 +46,29 @@ from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.data.datasets.coco import load_coco_json
 import pycocotools
 #声明类别，尽量保持
-CLASS_NAMES =['','person', 'car', 'motorcycle']
+CLASS_NAMES =['person', 'car', 'motorcycle']
 # 数据集路径
-DATASET_ROOT = './datasets/PCM_3c'
+DATASET_ROOT = '/media/researchsrv1/Data/COCO/COCO'
 ANN_ROOT = os.path.join(DATASET_ROOT, 'annotations')
 
-TRAIN_PATH = os.path.join(DATASET_ROOT, 'images_train')
-VAL_PATH = os.path.join(DATASET_ROOT, 'images_val')
+TRAIN_PATH = os.path.join(DATASET_ROOT, 'train2017')
+VAL_PATH = os.path.join(DATASET_ROOT, 'val2017')
 
-TRAIN_JSON = os.path.join(ANN_ROOT, 'instances_3c_train.json')
+TRAIN_JSON = os.path.join(ANN_ROOT, 'instances_train2017_PBC.json')
 #VAL_JSON = os.path.join(ANN_ROOT, 'val.json')
-VAL_JSON = os.path.join(ANN_ROOT, 'instances_3c_val.json')
+VAL_JSON = os.path.join(ANN_ROOT, 'instances_val2017_PBC.json')
 
 # 声明数据集的子集
 PREDEFINED_SPLITS_DATASET = {
-    "coco_PCM_train": (TRAIN_PATH, TRAIN_JSON),
-    "coco_PCM_val": (VAL_PATH, VAL_JSON),
+    "coco_PBC_train": (TRAIN_PATH, TRAIN_JSON),
+    "coco_PBC_val": (VAL_PATH, VAL_JSON),
 }
 #=============================
 # 注册数据集和元数据
 def plain_register_dataset():
     #训练集
-    DatasetCatalog.register("coco_PCM_train", lambda: load_coco_json(TRAIN_JSON, TRAIN_PATH))
-    MetadataCatalog.get("coco_PCM_train").set(thing_classes=CLASS_NAMES,  # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
+    DatasetCatalog.register("coco_PBC_train", lambda: load_coco_json(TRAIN_JSON, TRAIN_PATH))
+    MetadataCatalog.get("coco_PBC_train").set(thing_classes=CLASS_NAMES,  # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
                                                     #thing_dataset_id_to_contiguous_id={1: 0, 3: 1, 4: 2},
                                                     evaluator_type='coco', # 指定评估方式
                                                     json_file=TRAIN_JSON,
@@ -76,8 +76,8 @@ def plain_register_dataset():
 
     #DatasetCatalog.register("coco_my_val", lambda: load_coco_json(VAL_JSON, VAL_PATH, "coco_2017_val"))
     #验证/测试集
-    DatasetCatalog.register("coco_PCM_val", lambda: load_coco_json(VAL_JSON, VAL_PATH))
-    MetadataCatalog.get("coco_PCM_val").set(thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
+    DatasetCatalog.register("coco_PBC_val", lambda: load_coco_json(VAL_JSON, VAL_PATH))
+    MetadataCatalog.get("coco_PBC_val").set(thing_classes=CLASS_NAMES, # 可以选择开启，但是不能显示中文，这里需要注意，中文的话最好关闭
                                                 #thing_dataset_id_to_contiguous_id={1: 0, 3: 1, 4: 2},
                                                 evaluator_type='coco', # 指定评估方式
                                                 json_file=VAL_JSON,
@@ -85,7 +85,7 @@ def plain_register_dataset():
 # 查看数据集标注，可视化检查数据集标注是否正确，
 #这个也可以自己写脚本判断，其实就是判断标注框是否超越图像边界
 #可选择使用此方法
-def checkout_dataset_annotation(name="coco_PCM_val"):
+def checkout_dataset_annotation(name="coco_PBC_val"):
     #dataset_dicts = load_coco_json(TRAIN_JSON, TRAIN_PATH, name)
     dataset_dicts = load_coco_json(TRAIN_JSON, TRAIN_PATH)
     print(len(dataset_dicts))

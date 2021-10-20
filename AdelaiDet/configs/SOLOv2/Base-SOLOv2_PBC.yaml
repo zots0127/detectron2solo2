@@ -8,11 +8,11 @@ MODEL:
   FPN:
     IN_FEATURES: ["res2", "res3", "res4", "res5"]
 DATASETS:
-  TRAIN: ("coco_PCM_train",)
-  TEST: ("coco_PCM_val",)
+  TRAIN: ("coco_PBC_train",)
+  TEST: ("coco_PBC_val",)
 SOLVER:
-  IMS_PER_BATCH: 2
-  BASE_LR: 0.01
+  IMS_PER_BATCH: 12
+  BASE_LR: 0.002
   WARMUP_FACTOR: 0.01
   WARMUP_ITERS: 1000
   STEPS: (60000, 80000)
