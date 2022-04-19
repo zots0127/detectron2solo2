@@ -1,0 +1,9 @@
+_BASE_: "Base-SOLOv2_PCM.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  RESNETS:
+    DEPTH: 50
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 1600000
+OUTPUT_DIR: "training_dir/SOLOv2_R50_3x_PCM"
